@@ -1,0 +1,358 @@
+country,country_code,date,value
+Germany,DEU,2023,3.068
+Germany,DEU,2022,3.12
+Germany,DEU,2021,3.594
+Germany,DEU,2020,3.881
+Germany,DEU,2019,3.163
+Germany,DEU,2018,3.384
+Germany,DEU,2017,3.781
+Germany,DEU,2016,4.104
+Germany,DEU,2015,4.612
+Germany,DEU,2014,4.979
+Germany,DEU,2013,5.316
+Germany,DEU,2012,5.372
+Germany,DEU,2011,5.967
+Germany,DEU,2010,7.043
+Germany,DEU,2009,7.88
+Germany,DEU,2008,7.508
+Germany,DEU,2007,8.732
+Germany,DEU,2006,10.277
+Germany,DEU,2005,11.193
+Germany,DEU,2004,10.727
+Germany,DEU,2003,9.779
+France,FRA,2023,7.335
+France,FRA,2022,7.308
+France,FRA,2021,7.874
+France,FRA,2020,8.009
+France,FRA,2019,8.415
+France,FRA,2018,9.018
+France,FRA,2017,9.409
+France,FRA,2016,10.057
+France,FRA,2015,10.354
+France,FRA,2014,10.273
+France,FRA,2013,9.913
+France,FRA,2012,9.841
+France,FRA,2011,9.228
+France,FRA,2010,9.279
+France,FRA,2009,9.122
+France,FRA,2008,7.386
+France,FRA,2007,8.008
+France,FRA,2006,8.832
+France,FRA,2005,8.882
+France,FRA,2004,8.914
+France,FRA,2003,8.306
+Italy,ITA,2023,7.627
+Italy,ITA,2022,8.069
+Italy,ITA,2021,9.497
+Italy,ITA,2020,9.164
+Italy,ITA,2019,9.951
+Italy,ITA,2018,10.61
+Italy,ITA,2017,11.211
+Italy,ITA,2016,11.688
+Italy,ITA,2015,11.896
+Italy,ITA,2014,12.683
+Italy,ITA,2013,12.149
+Italy,ITA,2012,10.655
+Italy,ITA,2011,8.359
+Italy,ITA,2010,8.363
+Italy,ITA,2009,7.749
+Italy,ITA,2008,6.723
+Italy,ITA,2007,6.076
+Italy,ITA,2006,6.777
+Italy,ITA,2005,7.73
+Italy,ITA,2004,7.866
+Italy,ITA,2003,8.869
+Spain,ESP,2023,12.179
+Spain,ESP,2022,12.917
+Spain,ESP,2021,14.781
+Spain,ESP,2020,15.532
+Spain,ESP,2019,14.104
+Spain,ESP,2018,15.255
+Spain,ESP,2017,17.224
+Spain,ESP,2016,19.635
+Spain,ESP,2015,22.057
+Spain,ESP,2014,24.441
+Spain,ESP,2013,26.094
+Spain,ESP,2012,24.789
+Spain,ESP,2011,21.39
+Spain,ESP,2010,19.86
+Spain,ESP,2009,17.857
+Spain,ESP,2008,11.254
+Spain,ESP,2007,8.232
+Spain,ESP,2006,8.452
+Spain,ESP,2005,9.146
+Spain,ESP,2004,11.09
+Spain,ESP,2003,11.283
+Netherlands,NLD,2023,3.537
+Netherlands,NLD,2022,3.526
+Netherlands,NLD,2021,4.209
+Netherlands,NLD,2020,3.82
+Netherlands,NLD,2019,3.379
+Netherlands,NLD,2018,3.832
+Netherlands,NLD,2017,4.837
+Netherlands,NLD,2016,6.007
+Netherlands,NLD,2015,6.872
+Netherlands,NLD,2014,7.419
+Netherlands,NLD,2013,7.241
+Netherlands,NLD,2012,5.821
+Netherlands,NLD,2011,4.977
+Netherlands,NLD,2010,4.991
+Netherlands,NLD,2009,4.352
+Netherlands,NLD,2008,3.658
+Netherlands,NLD,2007,4.153
+Netherlands,NLD,2006,5.007
+Netherlands,NLD,2005,5.872
+Netherlands,NLD,2004,4.646
+Netherlands,NLD,2003,3.593
+Sweden,SWE,2023,7.611
+Sweden,SWE,2022,7.392
+Sweden,SWE,2021,8.722
+Sweden,SWE,2020,8.291
+Sweden,SWE,2019,6.833
+Sweden,SWE,2018,6.365
+Sweden,SWE,2017,6.718
+Sweden,SWE,2016,6.99
+Sweden,SWE,2015,7.432
+Sweden,SWE,2014,7.954
+Sweden,SWE,2013,8.052
+Sweden,SWE,2012,7.976
+Sweden,SWE,2011,7.804
+Sweden,SWE,2010,8.61
+Sweden,SWE,2009,8.351
+Sweden,SWE,2008,6.235
+Sweden,SWE,2007,6.161
+Sweden,SWE,2006,7.066
+Sweden,SWE,2005,7.81
+Sweden,SWE,2004,6.693
+Sweden,SWE,2003,5.555
+Poland,POL,2023,2.743
+Poland,POL,2022,2.811
+Poland,POL,2021,3.268
+Poland,POL,2020,3.155
+Poland,POL,2019,3.267
+Poland,POL,2018,3.835
+Poland,POL,2017,4.867
+Poland,POL,2016,6.141
+Poland,POL,2015,7.475
+Poland,POL,2014,8.971
+Poland,POL,2013,10.293
+Poland,POL,2012,10.031
+Poland,POL,2011,9.576
+Poland,POL,2010,9.578
+Poland,POL,2009,8.131
+Poland,POL,2008,7.069
+Poland,POL,2007,9.551
+Poland,POL,2006,13.794
+Poland,POL,2005,17.592
+Poland,POL,2004,18.822
+Poland,POL,2003,19.899
+Greece,GRC,2023,11.066
+Greece,GRC,2022,12.426
+Greece,GRC,2021,14.656
+Greece,GRC,2020,15.899
+Greece,GRC,2019,17.045
+Greece,GRC,2018,19.179
+Greece,GRC,2017,21.413
+Greece,GRC,2016,23.514
+Greece,GRC,2015,24.981
+Greece,GRC,2014,26.708
+Greece,GRC,2013,27.686
+Greece,GRC,2012,24.731
+Greece,GRC,2011,17.973
+Greece,GRC,2010,12.719
+Greece,GRC,2009,9.546
+Greece,GRC,2008,7.664
+Greece,GRC,2007,8.351
+Greece,GRC,2006,8.906
+Greece,GRC,2005,10.074
+Greece,GRC,2004,10.628
+Greece,GRC,2003,9.839
+Portugal,PRT,2023,6.509
+Portugal,PRT,2022,6.011
+Portugal,PRT,2021,6.577
+Portugal,PRT,2020,6.801
+Portugal,PRT,2019,6.464
+Portugal,PRT,2018,6.994
+Portugal,PRT,2017,8.869
+Portugal,PRT,2016,11.068
+Portugal,PRT,2015,12.447
+Portugal,PRT,2014,13.897
+Portugal,PRT,2013,16.188
+Portugal,PRT,2012,15.531
+Portugal,PRT,2011,12.682
+Portugal,PRT,2010,10.771
+Portugal,PRT,2009,9.432
+Portugal,PRT,2008,7.553
+Portugal,PRT,2007,7.965
+Portugal,PRT,2006,7.649
+Portugal,PRT,2005,7.582
+Portugal,PRT,2004,6.319
+Portugal,PRT,2003,6.132
+Norway,NOR,2023,3.572
+Norway,NOR,2022,3.231
+Norway,NOR,2021,4.359
+Norway,NOR,2020,4.424
+Norway,NOR,2019,3.684
+Norway,NOR,2018,3.801
+Norway,NOR,2017,4.164
+Norway,NOR,2016,4.68
+Norway,NOR,2015,4.296
+Norway,NOR,2014,3.486
+Norway,NOR,2013,3.425
+Norway,NOR,2012,3.129
+Norway,NOR,2011,3.196
+Norway,NOR,2010,3.527
+Norway,NOR,2009,3.1
+Norway,NOR,2008,2.521
+Norway,NOR,2007,2.493
+Norway,NOR,2006,3.397
+Norway,NOR,2005,4.381
+Norway,NOR,2004,4.256
+Norway,NOR,2003,4.221
+United Kingdom,GBR,2023,3.984
+United Kingdom,GBR,2022,3.73
+United Kingdom,GBR,2021,4.826
+United Kingdom,GBR,2020,4.472
+United Kingdom,GBR,2019,3.613
+United Kingdom,GBR,2018,4.12
+United Kingdom,GBR,2017,4.452
+United Kingdom,GBR,2016,4.867
+United Kingdom,GBR,2015,5.517
+United Kingdom,GBR,2014,6.363
+United Kingdom,GBR,2013,7.704
+United Kingdom,GBR,2012,8.25
+United Kingdom,GBR,2011,8.169
+United Kingdom,GBR,2010,7.924
+United Kingdom,GBR,2009,7.627
+United Kingdom,GBR,2008,5.705
+United Kingdom,GBR,2007,5.342
+United Kingdom,GBR,2006,5.411
+United Kingdom,GBR,2005,4.835
+United Kingdom,GBR,2004,4.594
+United Kingdom,GBR,2003,4.807
+Japan,JPN,2023,2.6
+Japan,JPN,2022,2.6
+Japan,JPN,2021,2.828
+Japan,JPN,2020,2.809
+Japan,JPN,2019,2.351
+Japan,JPN,2018,2.467
+Japan,JPN,2017,2.822
+Japan,JPN,2016,3.132
+Japan,JPN,2015,3.385
+Japan,JPN,2014,3.589
+Japan,JPN,2013,4.038
+Japan,JPN,2012,4.358
+Japan,JPN,2011,4.55
+Japan,JPN,2010,5.102
+Japan,JPN,2009,5.068
+Japan,JPN,2008,4.002
+Japan,JPN,2007,3.888
+Japan,JPN,2006,4.192
+Japan,JPN,2005,4.446
+Japan,JPN,2004,4.734
+Japan,JPN,2003,5.251
+"Korea, Rep.",KOR,2023,2.675
+"Korea, Rep.",KOR,2022,2.857
+"Korea, Rep.",KOR,2021,3.639
+"Korea, Rep.",KOR,2020,3.931
+"Korea, Rep.",KOR,2019,3.746
+"Korea, Rep.",KOR,2018,3.824
+"Korea, Rep.",KOR,2017,3.653
+"Korea, Rep.",KOR,2016,3.65
+"Korea, Rep.",KOR,2015,3.546
+"Korea, Rep.",KOR,2014,3.082
+"Korea, Rep.",KOR,2013,2.747
+"Korea, Rep.",KOR,2012,2.812
+"Korea, Rep.",KOR,2011,2.992
+"Korea, Rep.",KOR,2010,3.324
+"Korea, Rep.",KOR,2009,3.363
+"Korea, Rep.",KOR,2008,2.959
+"Korea, Rep.",KOR,2007,3.013
+"Korea, Rep.",KOR,2006,3.254
+"Korea, Rep.",KOR,2005,3.482
+"Korea, Rep.",KOR,2004,3.42
+"Korea, Rep.",KOR,2003,3.348
+China,CHN,2023,4.67
+China,CHN,2022,4.98
+China,CHN,2021,4.55
+China,CHN,2020,5.0
+China,CHN,2019,4.56
+China,CHN,2018,4.31
+China,CHN,2017,4.47
+China,CHN,2016,4.56
+China,CHN,2015,4.65
+China,CHN,2014,4.63
+China,CHN,2013,4.6
+China,CHN,2012,4.58
+China,CHN,2011,4.55
+China,CHN,2010,4.53
+China,CHN,2009,4.72
+China,CHN,2008,4.59
+China,CHN,2007,4.35
+China,CHN,2006,4.43
+China,CHN,2005,4.52
+China,CHN,2004,4.49
+China,CHN,2003,4.58
+India,IND,2023,4.172
+India,IND,2022,4.822
+India,IND,2021,6.38
+India,IND,2020,7.859
+India,IND,2019,6.51
+India,IND,2018,7.652
+India,IND,2017,7.618
+India,IND,2016,7.601
+India,IND,2015,7.631
+India,IND,2014,7.674
+India,IND,2013,7.711
+India,IND,2012,7.666
+India,IND,2011,7.616
+India,IND,2010,7.652
+India,IND,2009,7.664
+India,IND,2008,7.656
+India,IND,2007,7.561
+India,IND,2006,7.552
+India,IND,2005,7.552
+India,IND,2004,7.625
+India,IND,2003,7.68
+Singapore,SGP,2023,3.444
+Singapore,SGP,2022,3.591
+Singapore,SGP,2021,4.64
+Singapore,SGP,2020,4.1
+Singapore,SGP,2019,3.1
+Singapore,SGP,2018,3.613
+Singapore,SGP,2017,4.2
+Singapore,SGP,2016,4.08
+Singapore,SGP,2015,3.79
+Singapore,SGP,2014,3.74
+Singapore,SGP,2013,3.86
+Singapore,SGP,2012,3.72
+Singapore,SGP,2011,3.89
+Singapore,SGP,2010,4.12
+Singapore,SGP,2009,5.86
+Singapore,SGP,2008,3.96
+Singapore,SGP,2007,3.9
+Singapore,SGP,2006,4.48
+Singapore,SGP,2005,5.59
+Singapore,SGP,2004,5.84
+Singapore,SGP,2003,5.93
+Viet Nam,VNM,2023,1.645
+Viet Nam,VNM,2022,1.523
+Viet Nam,VNM,2021,2.385
+Viet Nam,VNM,2020,2.103
+Viet Nam,VNM,2019,1.681
+Viet Nam,VNM,2018,1.161
+Viet Nam,VNM,2017,1.874
+Viet Nam,VNM,2016,1.848
+Viet Nam,VNM,2015,1.848
+Viet Nam,VNM,2014,1.256
+Viet Nam,VNM,2013,1.316
+Viet Nam,VNM,2012,1.027
+Viet Nam,VNM,2011,0.999
+Viet Nam,VNM,2010,1.114
+Viet Nam,VNM,2009,1.737
+Viet Nam,VNM,2008,1.889
+Viet Nam,VNM,2007,2.026
+Viet Nam,VNM,2006,2.046
+Viet Nam,VNM,2005,2.078
+Viet Nam,VNM,2004,2.14
+Viet Nam,VNM,2003,2.25

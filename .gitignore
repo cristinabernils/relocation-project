@@ -1,0 +1,16 @@
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Streamlit cache
+.streamlit/
+
+# IDEs
+.vscode/
+.idea/
+
+# MacOS
+.DS_Store
+
+# Others
+*.swp
