@@ -36,7 +36,7 @@ def plot_indicator_over_time(df, country, indicator, ylabel=None):
     fig, ax = plt.subplots(figsize=(6, 4))
     sns.lineplot(x="date", y=indicator, data=data, ax=ax)
     ax.set_title(f"{indicator.replace('_', ' ').title()} – {country}")
-    ax.set_xlabel("Año")
+    ax.set_xlabel("Year")
     if ylabel:
         ax.set_ylabel(ylabel)
     ax.grid(True)
