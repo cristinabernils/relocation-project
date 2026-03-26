@@ -1,9 +1,10 @@
 # src/visuals.py
 
 import matplotlib.pyplot as plt
-from matplotlib.ticker import MaxNLocator
 import numpy as np
 import seaborn as sns
+from matplotlib.ticker import MaxNLocator
+
 
 def plot_dual_radar(row1, row2, label1, label2):
     categories = row1.index.tolist()
@@ -40,5 +41,5 @@ def plot_indicator_over_time(df, country, indicator, ylabel=None):
     if ylabel:
         ax.set_ylabel(ylabel)
     ax.grid(True)
-    ax.xaxis.set_major_locator(MaxNLocator(integer=True)) 
+    ax.xaxis.set_major_locator(MaxNLocator(integer=True))
     return fig

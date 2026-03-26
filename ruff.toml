@@ -1,0 +1,11 @@
+# ruff.toml
+[lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501"]
+
+# Ignore E402 in notebooks (expected due to cell structure)
+[lint.per-file-ignores]
+"notebooks/*.ipynb" = ["E402"]
+
+[lint.isort]
+known-first-party = ["src"]
