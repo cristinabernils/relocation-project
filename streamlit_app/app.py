@@ -10,6 +10,14 @@ import streamlit as st
 import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import MinMaxScaler
+from src.config import (
+    INDICATORS,
+    CONTEXT_DATA,
+    DEFAULT_WEIGHTS,
+    DATA_RAW_PATH,
+    DATA_EXTERNAL_PATH,
+    COUNTRY_RECOMMENDATIONS,
+)
 from src.preprocessing import load_and_clean_indicator, get_common_year, aggregate_historical
 from src.scoring import compute_relocation_score
 from src.visuals import plot_dual_radar, plot_indicator_over_time
@@ -24,22 +32,10 @@ st.markdown("Set your priorities and discover the country that best matches your
 # --------------------------
 # INITIAL CONFIGURATION
 # --------------------------
-INDICATORS = [
-    "gdp_per_capita", "inflation", "unemployment",
-    "gini_index", "education_spending_gdp"
-]
-
-CONTEXT_DATA = {
-    "country": [
-        "Germany", "Spain", "Norway", "United Kingdom",
-        "Sweden", "Japan", "Portugal", "Greece"
-    ],
-    "maternity_score": [4, 4, 5, 3, 5, 2, 4, 3]
-}
 context_df = pd.DataFrame(CONTEXT_DATA)
 
 # Load HDI external data and merge
-hdi_path = os.path.join("data", "external", "hdi_historical.csv")
+hdi_path = os.path.join(DATA_EXTERNAL_PATH, "hdi_historical.csv")
 hdi_df = pd.read_csv(hdi_path)
 hdi_df = hdi_df.rename(columns={
     "Entity": "country",
@@ -55,16 +51,16 @@ hdi_df = hdi_df.rename(columns={"date": "date", "hdi": "hdi", "country": "countr
 # --------------------------
 st.sidebar.header("🎛️ Prioritize what matters most to you")
 
-w_gdp = st.sidebar.slider("Income (GDP per capita)", 0.0, 1.0, 0.3, 0.05)
-w_gini = st.sidebar.slider("Equality (Gini index)", 0.0, 1.0, 0.2, 0.05)
-w_edu = st.sidebar.slider("Education (% of GDP)", 0.0, 1.0, 0.15, 0.05)
-w_mat = st.sidebar.slider("Maternity support", 0.0, 1.0, 0.1, 0.05)
-w_emp = st.sidebar.slider("Employment (low unemployment)", 0.0, 1.0, 0.05, 0.01)
-w_stab = st.sidebar.slider("Economic stability (low inflation)", 0.0, 1.0, 0.05, 0.01)
-w_hdi = st.sidebar.slider("Human Development Index (HDI)", 0.0, 1.0, 0.3, 0.05)
+w_gdp = st.sidebar.slider("Income (GDP per capita)", 0.0, 1.0, DEFAULT_WEIGHTS["gdp"], 0.05)
+w_gini = st.sidebar.slider("Equality (Gini index)", 0.0, 1.0, DEFAULT_WEIGHTS["gini"], 0.05)
+w_edu = st.sidebar.slider("Education (% of GDP)", 0.0, 1.0, DEFAULT_WEIGHTS["education"], 0.05)
+w_mat = st.sidebar.slider("Maternity support", 0.0, 1.0, DEFAULT_WEIGHTS["maternity"], 0.05)
+w_emp = st.sidebar.slider("Employment (low unemployment)", 0.0, 1.0, DEFAULT_WEIGHTS["employment"], 0.01)
+w_stab = st.sidebar.slider("Economic stability (low inflation)", 0.0, 1.0, DEFAULT_WEIGHTS["stability"], 0.01)
+w_hdi = st.sidebar.slider("Human Development Index (HDI)", 0.0, 1.0, DEFAULT_WEIGHTS["hdi"], 0.05)
 
 # Normalize weights
-total = sum([w_gdp, w_gini, w_edu, w_mat, w_emp, w_stab])
+total = sum([w_gdp, w_gini, w_edu, w_mat, w_emp, w_stab, w_hdi])
 weights = {
     "gdp": w_gdp / total,
     "gini": w_gini / total,
@@ -82,7 +78,7 @@ weights = {
 def load_data():
     dfs = []
     for ind in INDICATORS:
-        path = os.path.join("data/raw", f"{ind}_worldbank.csv")
+        path = os.path.join(DATA_RAW_PATH, f"{ind}_worldbank.csv")
         df = load_and_clean_indicator(path, ind)
         dfs.append(df)
     merged = aggregate_historical(dfs)
@@ -93,7 +89,7 @@ def load_data():
 def load_historical_raw():
     dfs = []
     for ind in INDICATORS:
-        path = os.path.join("data/raw", f"{ind}_worldbank.csv")
+        path = os.path.join(DATA_RAW_PATH, f"{ind}_worldbank.csv")
         df = load_and_clean_indicator(path, ind)
         dfs.append(df)
     merged = reduce(lambda l, r: pd.merge(l, r, on=["country", "country_code", "date"], how="outer"), dfs)
@@ -122,18 +118,8 @@ with col2:
     2. **{top3[1]}**  
     3. **{top3[2]}**
     """)
-    reco = {
-        "Norway": "Norway excels in social support, high salaries, and egalitarian policies.",
-        "Sweden": "Sweden is balanced in all aspects, with progressive policies and strong quality of life.",
-        "Germany": "Germany combines a strong economy with decent equality and job opportunities.",
-        "United Kingdom": "UK has solid economic indicators, though weaker family policies.",
-        "Japan": "Japan ranks high on GDP but lower in equality and maternity support.",
-        "Portugal": "Portugal offers high quality of life and rights, with relatively lower salaries.",
-        "Spain": "Spain is strong on maternity and social rights, with some challenges in employment.",
-        "Greece": "Greece struggles more in employment and stability, despite a rich social culture."
-    }
     top1 = top3[0]
-    st.info(reco.get(top1, "This country leads your ranking by aligning well with your preferences."))
+    st.info(COUNTRY_RECOMMENDATIONS.get(top1, "This country leads your ranking by aligning well with your preferences."))
 
 # --------------------------
 # COUNTRY COMPARISON (RADAR)

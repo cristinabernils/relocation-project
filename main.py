@@ -1,6 +1,13 @@
 # main.py
 
-from src.data_fetching import fetch_multiple_indicators, EUROPE_ASIA_COUNTRIES, INDICATORS_DICT
+from src.config import (
+    CONTEXT_DATA,
+    DEFAULT_WEIGHTS,
+    DATA_RAW_PATH,
+    DATA_PROCESSED_PATH,
+    INDICATORS_DICT,
+)
+from src.data_fetching import fetch_multiple_indicators, EUROPE_ASIA_COUNTRIES
 from src.preprocessing import load_and_clean_indicator, get_common_year, aggregate_historical
 from src.scoring import compute_relocation_score
 
@@ -28,7 +35,7 @@ def build_ranking():
     print("🔧 Building relocation score ranking...")
 
     INDICATORS = list(INDICATORS_DICT.values())
-    RAW_PATH = "data/raw/"
+    RAW_PATH = DATA_RAW_PATH
     dfs = []
 
     for ind in INDICATORS:
@@ -61,31 +68,16 @@ def build_ranking():
     merged = pd.merge(merged, hdi_df, on=["country", "date"], how="left")
 
     # Contextual data (non-numeric indicators)
-    context_data = {
-        "country": [
-            "Germany", "Spain", "Norway", "United Kingdom",
-            "Sweden", "Japan", "Portugal", "Greece"
-        ],
-        "maternity_score": [4, 4, 5, 3, 5, 2, 4, 3]
-    }
-    context_df = pd.DataFrame(context_data)
+    context_df = pd.DataFrame(CONTEXT_DATA)
 
     # Default weight configuration
-    weights = {
-        "gdp": 0.30,
-        "gini": 0.20,
-        "education": 0.15,
-        "maternity": 0.10,
-        "employment": 0.05,
-        "stability": 0.05,
-        "hdi": 0.15
-    }
+    weights = DEFAULT_WEIGHTS
 
     scored_df = compute_relocation_score(merged, context_df, weights)
 
-    os.makedirs("data/processed", exist_ok=True)
+    os.makedirs(DATA_PROCESSED_PATH, exist_ok=True)
     scored_df[["country", "relocation_score"]].sort_values(by="relocation_score", ascending=False)\
-        .to_csv("data/processed/relocation_ranking.csv", index=False)
+        .to_csv(f"{DATA_PROCESSED_PATH}/relocation_ranking.csv", index=False)
 
     print("✅ Final ranking saved to data/processed/relocation_ranking.csv")
 
