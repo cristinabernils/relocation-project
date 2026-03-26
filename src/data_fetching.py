@@ -1,7 +1,6 @@
 import os
-
-import pandas as pd
 import requests
+import pandas as pd
 
 os.makedirs("data/raw", exist_ok=True)
 

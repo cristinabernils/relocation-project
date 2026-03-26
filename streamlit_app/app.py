@@ -1,32 +1,20 @@
 # streamlit_app/app.py
-"""
-Streamlit dashboard for the Relocation App.
-Interactive visualization and country comparison.
-"""
 
 import os
 import sys
-
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from functools import reduce
-
-import matplotlib.pyplot as plt
 import pandas as pd
-import seaborn as sns
+import numpy as np
 import streamlit as st
-
-from src.config import (
-    CONTEXT_DATA,
-    COUNTRY_RECOMMENDATIONS,
-    DATA_EXTERNAL_PATH,
-    DATA_RAW_PATH,
-    INDICATORS,
-)
-from src.predictive import predict_random_forest_trend
-from src.preprocessing import aggregate_historical, load_and_clean_indicator
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import MinMaxScaler
+from src.preprocessing import load_and_clean_indicator, get_common_year, aggregate_historical
 from src.scoring import compute_relocation_score
 from src.visuals import plot_dual_radar, plot_indicator_over_time
+from src.predictive import predict_linear_trend, predict_random_forest_trend
+from functools import reduce
 
 st.set_page_config(page_title="Relocation Score App", layout="wide")
 
@@ -36,17 +24,30 @@ st.markdown("Set your priorities and discover the country that best matches your
 # --------------------------
 # INITIAL CONFIGURATION
 # --------------------------
+INDICATORS = [
+    "gdp_per_capita", "inflation", "unemployment",
+    "gini_index", "education_spending_gdp"
+]
+
+CONTEXT_DATA = {
+    "country": [
+        "Germany", "Spain", "Norway", "United Kingdom",
+        "Sweden", "Japan", "Portugal", "Greece"
+    ],
+    "maternity_score": [4, 4, 5, 3, 5, 2, 4, 3]
+}
 context_df = pd.DataFrame(CONTEXT_DATA)
 
 # Load HDI external data and merge
-hdi_path = os.path.join(DATA_EXTERNAL_PATH, "hdi_historical.csv")
+hdi_path = os.path.join("data", "external", "hdi_historical.csv")
 hdi_df = pd.read_csv(hdi_path)
 hdi_df = hdi_df.rename(columns={
     "Entity": "country",
     "Year": "date",
     "Human Development Index": "hdi"
 })
-hdi_df["date"] = hdi_df["date"].astype(int)
+hdi_df["date"] = hdi_df["date"].astype(int) 
+hdi_df = hdi_df.rename(columns={"date": "date", "hdi": "hdi", "country": "country"})
 
 
 # --------------------------
@@ -81,7 +82,7 @@ weights = {
 def load_data():
     dfs = []
     for ind in INDICATORS:
-        path = os.path.join(DATA_RAW_PATH, f"{ind}_worldbank.csv")
+        path = os.path.join("data/raw", f"{ind}_worldbank.csv")
         df = load_and_clean_indicator(path, ind)
         dfs.append(df)
     merged = aggregate_historical(dfs)
@@ -92,10 +93,10 @@ def load_data():
 def load_historical_raw():
     dfs = []
     for ind in INDICATORS:
-        path = os.path.join(DATA_RAW_PATH, f"{ind}_worldbank.csv")
+        path = os.path.join("data/raw", f"{ind}_worldbank.csv")
         df = load_and_clean_indicator(path, ind)
         dfs.append(df)
-    merged = reduce(lambda left, right: pd.merge(left, right, on=["country", "country_code", "date"], how="outer"), dfs)
+    merged = reduce(lambda l, r: pd.merge(l, r, on=["country", "country_code", "date"], how="outer"), dfs)
     return merged
 
 df_scored = load_data()
@@ -117,12 +118,22 @@ with col2:
     st.markdown(f"""
     **Top 3 recommended countries:**
 
-    1. **{top3[0]}**
-    2. **{top3[1]}**
+    1. **{top3[0]}**  
+    2. **{top3[1]}**  
     3. **{top3[2]}**
     """)
+    reco = {
+        "Norway": "Norway excels in social support, high salaries, and egalitarian policies.",
+        "Sweden": "Sweden is balanced in all aspects, with progressive policies and strong quality of life.",
+        "Germany": "Germany combines a strong economy with decent equality and job opportunities.",
+        "United Kingdom": "UK has solid economic indicators, though weaker family policies.",
+        "Japan": "Japan ranks high on GDP but lower in equality and maternity support.",
+        "Portugal": "Portugal offers high quality of life and rights, with relatively lower salaries.",
+        "Spain": "Spain is strong on maternity and social rights, with some challenges in employment.",
+        "Greece": "Greece struggles more in employment and stability, despite a rich social culture."
+    }
     top1 = top3[0]
-    st.info(COUNTRY_RECOMMENDATIONS.get(top1, "This country leads your ranking by aligning well with your preferences."))
+    st.info(reco.get(top1, "This country leads your ranking by aligning well with your preferences."))
 
 # --------------------------
 # COUNTRY COMPARISON (RADAR)

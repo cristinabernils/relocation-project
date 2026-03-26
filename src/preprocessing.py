@@ -1,18 +1,18 @@
 # src/preprocessing.py
 
 import pandas as pd
-
+from sklearn.preprocessing import MinMaxScaler
 
 def load_and_clean_indicator(path, indicator_name):
     df = pd.read_csv(path)
     df["date"] = pd.to_numeric(df["date"], errors="coerce")
     df = df.rename(columns={"value": indicator_name})
-
+    
     # Imputation using country-level mean
     df[indicator_name] = df.groupby("country")[indicator_name].transform(lambda x: x.fillna(x.mean()))
     # If NaNs remain → use global yearly median
     df[indicator_name] = df.groupby("date")[indicator_name].transform(lambda x: x.fillna(x.median()))
-
+    
     return df.dropna(subset=[indicator_name])
 
 def get_common_year(dfs):
@@ -28,7 +28,7 @@ def aggregate_historical(dfs):
     from functools import reduce
 
     df_merged = reduce(
-        lambda left, right: pd.merge(left, right, on=["country", "country_code", "date"], how="outer"),
+        lambda l, r: pd.merge(l, r, on=["country", "country_code", "date"], how="outer"),
         dfs
     )
 
